@@ -9,11 +9,12 @@ public class ResourceManager : MonoBehaviour
     public UnitSpawner unitSpawner;
     public PlayerBase playerBase;
     public Text upgradeCostText;
-    private int playerResources = 0;
+    public int playerResources = 0;
     private int enemyResources = 0;
-    float resourceGainInterval = 0.5f;
+    float resourceGainInterval = 0.47f;
     int resourceGainAmount = 1;
-    int upgradeCost = 30;
+    int upgradeCost = 20;
+    int upgradeIncrease = 15;
     int healCost = 50;
     float diff = 1f;
     int fightTimer;
@@ -42,6 +43,7 @@ public class ResourceManager : MonoBehaviour
         {
             diff = 5f;
             resourceGainAmount = 10;
+            upgradeIncrease = 100;
             upgradeCost *= (int)diff;
         }
         if (GameSettings.IsToggleOn) resourceGainAmount = 1000;
@@ -69,20 +71,25 @@ public class ResourceManager : MonoBehaviour
         {
             yield return new WaitForSeconds(1);
             fightTimer++;
-            if (fightTimer >= 30 / diff && !phase1)
+            if (fightTimer >= 20 / diff && !phase1)
             {
+                resourceGainInterval = 0.45f;
                 StartCoroutine(ShadowBerserkSpawn());
                 phase1 = true;
             }
-            if (fightTimer >= 60 / diff && !phase2)
+            if (fightTimer >= 30 / diff && !phase2)
             {
+                resourceGainInterval = 0.43f;
                 StartCoroutine(ShadowMageSpawn());
                 phase2 = true;
+                if(!GameSettings.IsDevilModOn) diff = 1.2f;
             }
-            if (fightTimer >= 120 / diff && !phase3)
+            if (fightTimer >= 35 / diff && !phase3)
             {
+                resourceGainInterval = 0.40f;
                 StartCoroutine(ShadowHeavyKnightSpawn());
                 phase3 = true;
+                if(!GameSettings.IsDevilModOn) diff = 1.5f;
             }
         }
     }
@@ -91,7 +98,7 @@ public class ResourceManager : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(Random.Range(4, 8) / diff);
+            yield return new WaitForSeconds(Random.Range(2, 8) / diff);
             unitSpawner.ShadowKnightSpawn();
         }
     }
@@ -99,7 +106,7 @@ public class ResourceManager : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(Random.Range(6, 10) / diff);
+            yield return new WaitForSeconds(Random.Range(5, 12) / diff);
             unitSpawner.ShadowBerserkSpawn();
         }
     }
@@ -107,7 +114,7 @@ public class ResourceManager : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(Random.Range(12, 16) / diff);
+            yield return new WaitForSeconds(Random.Range(10, 16) / diff);
             unitSpawner.ShadowMageSpawn();
         }
     }
@@ -115,7 +122,7 @@ public class ResourceManager : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(Random.Range(34, 38) / diff);
+            yield return new WaitForSeconds(Random.Range(20, 38) / diff);
             unitSpawner.ShadowHeavyKnightSpawn();
         }
     }
@@ -124,7 +131,7 @@ public class ResourceManager : MonoBehaviour
         if (SpendPlayerResources(upgradeCost))
         {
             resourceGainAmount += 1 * (int)diff;
-            upgradeCost *= 3;
+            upgradeCost += upgradeIncrease;
             upgradeCount++;
             upgradeCostText.text = upgradeCost.ToString();
         }

@@ -27258,7 +27258,7 @@ GameObject:
   - component: {fileID: 1205394050}
   m_Layer: 5
   m_Name: UI
-  m_TagString: Untagged
+  m_TagString: ResourceManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27306,6 +27306,7 @@ MonoBehaviour:
   unitSpawner: {fileID: 197798873}
   playerBase: {fileID: 1303304968}
   upgradeCostText: {fileID: 2042081313}
+  playerResources: 0
   berserkBtn: {fileID: 2090452071}
   mageBtn: {fileID: 1928988093}
   heavyKnightBtn: {fileID: 2112328324}
@@ -39679,6 +39680,7 @@ MonoBehaviour:
   attackRate: 1
   targetUnit: {fileID: 0}
   isDead: 0
+  rm: {fileID: 0}
 --- !u!1 &306733158801069507
 GameObject:
   m_ObjectHideFlags: 0
@@ -45604,6 +45606,7 @@ MonoBehaviour:
   attackRate: 1
   targetUnit: {fileID: 0}
   isDead: 0
+  rm: {fileID: 0}
   magicProjectilePrefab: {fileID: 3837496948680483879, guid: 64eaaec41a9aa284aa83b76254eb74f3,
     type: 3}
   projectileSpawnPoint: {fileID: 2704304981637763401}
@@ -52138,6 +52141,7 @@ MonoBehaviour:
   attackRate: 0.3
   targetUnit: {fileID: 0}
   isDead: 0
+  rm: {fileID: 0}
 --- !u!4 &2111332138923566621
 Transform:
   m_ObjectHideFlags: 0
@@ -65451,6 +65455,7 @@ MonoBehaviour:
   attackRate: 1
   targetUnit: {fileID: 0}
   isDead: 0
+  rm: {fileID: 0}
 --- !u!4 &5074906699185994047
 Transform:
   m_ObjectHideFlags: 0
@@ -70157,6 +70162,7 @@ MonoBehaviour:
   attackRate: 1
   targetUnit: {fileID: 0}
   isDead: 0
+  rm: {fileID: 0}
 --- !u!210 &6307357422530035818
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -79854,6 +79860,7 @@ MonoBehaviour:
   attackRate: 0.3
   targetUnit: {fileID: 0}
   isDead: 0
+  rm: {fileID: 0}
 --- !u!1 &7626286429587918666
 GameObject:
   m_ObjectHideFlags: 0
@@ -82252,6 +82259,7 @@ MonoBehaviour:
   attackRate: 1
   targetUnit: {fileID: 0}
   isDead: 0
+  rm: {fileID: 0}
 --- !u!1 &8194014260711857100
 GameObject:
   m_ObjectHideFlags: 0
@@ -83614,6 +83622,7 @@ MonoBehaviour:
   attackRate: 1
   targetUnit: {fileID: 0}
   isDead: 0
+  rm: {fileID: 0}
   magicProjectilePrefab: {fileID: 3837496948680483879, guid: 64eaaec41a9aa284aa83b76254eb74f3,
     type: 3}
   projectileSpawnPoint: {fileID: 4573418843128355811}

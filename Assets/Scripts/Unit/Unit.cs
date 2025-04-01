@@ -15,9 +15,10 @@ public abstract class Unit : MonoBehaviour
     protected Animator animator;
     protected abstract string GetEnemyBaseTag();
     protected abstract string GetEnemyUnitTag();
-
+    public ResourceManager rm;
     void Start()
     {
+        rm = GameObject.FindWithTag("ResourceManager").GetComponent<ResourceManager>();
         animator = GetComponent<Animator>();
         targetBase = GameObject.FindWithTag(GetEnemyBaseTag()).transform;
     }
@@ -48,7 +49,6 @@ public abstract class Unit : MonoBehaviour
 
     void MoveToBase()
     {
-        // Движение к вражеской базе
         transform.position = Vector2.MoveTowards(transform.position * new Vector2(1, 0), targetBase.position * new Vector2(1, 0), speed * Time.deltaTime);
         FindEnemyUnits();
 
@@ -56,7 +56,6 @@ public abstract class Unit : MonoBehaviour
 
     public void FindEnemyUnits()
     {
-        // Ищем вражеских юнитов в радиусе атаки
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, attackRange * 0.6f);
         foreach (var hit in hits)
         {
@@ -76,7 +75,6 @@ public abstract class Unit : MonoBehaviour
         }
     }
 
-    // Абстрактный метод для атаки (будет реализован в дочерних классах)
     protected abstract void AttackTarget();
     protected virtual void AttackBase()
     {
@@ -97,6 +95,25 @@ public abstract class Unit : MonoBehaviour
 
     void Die()
     {
+        if (GetEnemyUnitTag() == "PlayerUnit")
+        {
+            if (gameObject.name == "EnemyKnight(Clone)")
+            {
+                rm.playerResources += 2;
+            }
+            if (gameObject.name == "EnemyBerserk(Clone)")
+            {
+                rm.playerResources += 3;
+            }
+            if (gameObject.name == "EnemyMage(Clone)")
+            {
+                rm.playerResources += 5;
+            }
+            if (gameObject.name == "EnemyHeavyKnight(Clone)")
+            {
+                rm.playerResources += 10;
+            }
+        }
         isDead = true;
         animator.SetTrigger("3_Death");
         gameObject.layer = LayerMask.NameToLayer("DeadUnits");

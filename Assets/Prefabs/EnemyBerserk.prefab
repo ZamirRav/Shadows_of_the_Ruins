@@ -561,6 +561,7 @@ MonoBehaviour:
   attackRate: 1
   targetUnit: {fileID: 0}
   isDead: 0
+  rm: {fileID: 0}
 --- !u!1 &760409237273532145
 GameObject:
   m_ObjectHideFlags: 0

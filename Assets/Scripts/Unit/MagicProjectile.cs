@@ -8,7 +8,7 @@ public class MagicProjectile : MonoBehaviour
     public string tag1, tag2;
     private Transform target; // Цель (вражеский юнит или база)
     private Rigidbody2D rb;
-    private Unit targetUnit;
+    public Unit targetUnit;
     public Unit parent;
     private string targetType;
     private string baseType = "Base";
@@ -73,7 +73,6 @@ public class MagicProjectile : MonoBehaviour
                     {
                         targetUnit = null;
                         parent.targetUnit = null;
-
                     }
                 }
             }
