@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      BerserkBtn_0: -8718717865390983187
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
