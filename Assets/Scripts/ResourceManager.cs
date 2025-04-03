@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ResourceManager : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class ResourceManager : MonoBehaviour
     public Text coinsAmount;
     public UnitSpawner unitSpawner;
     public PlayerBase playerBase;
-    public Text upgradeCostText;
+    public TextMeshProUGUI upgradeCostText;
     public int playerResources = 0;
     private int enemyResources = 0;
     float resourceGainInterval = 0.47f;
